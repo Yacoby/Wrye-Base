@@ -1,0 +1,19 @@
+
+==balt==
+**TODO**
+Balt has in most cases been moved to wryebase/gui
+
+Things such as IdList, which have no wx dependacy have moved elsewhere
+
+
+==bolt==
+WryeText has moved to its own module (wtex). bolt is still used to generate it
+due to the dependcy on mainfunc
+
+Path functions have moved to their own module (path)
+
+Localization has moved to its own module (localization)
+
+bUseUnicode has moved to its own module (conf). This in theory allows for
+changing of the variable at runtime, however this may not work. So set it
+to the required value at startup

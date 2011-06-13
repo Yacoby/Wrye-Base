@@ -1,0 +1,7 @@
+This is an attempt to refactor some of Wrye Bash out of Wrye Bash and into a 
+seperate library. This should allow more programs, such as Wrye Mash to take
+advantage of changes to Wrye Bash.
+
+It also has the advantage of fixing some of the problems in the code base
+with Wrye Bash as well as trying to seperate some of the code as dependancies
+become more visible.

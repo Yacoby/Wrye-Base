@@ -1,0 +1,2 @@
+useUnicode = False
+deprintOn = False
