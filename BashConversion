@@ -1,3 +1,32 @@
+====Planned Structure====
+
+wryebase\
+  gui\              everything to do with the user bash interface that is
+                    game indepndant. much of this comes from balt.py and
+                    basher.py
+
+    __init__.py     core utility functions/classes
+    mod.py          mod panel
+    ini.py          ini panel
+
+  struct\           custom data structures. all will be imported into struct
+                    although they may exist in deperate files (to help version
+                    control/show depenancies) Much of this code comes from
+                    bolt.py
+
+    __init__.py     imports all other files in this directory so you 
+                    only need to import struct for ease of use
+                    
+    table.py        This would contain the table strucure. This would not
+                    need to be imported as it is imported into struct (so
+                    you just need to import struct)
+
+  wizard/           Abstract from belt.py, 
+
+
+==basher==
+**TODO**
+Moved dialog pannels to 
 
 ==balt==
 **TODO**

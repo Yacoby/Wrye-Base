@@ -1,7 +1,7 @@
 from __future__ import with_statement
 
-import wryebase.conf
-from wryebase.localization import _
+import conf
+from localization import _
 
 class BoltError(Exception):
     """Generic error with a string message."""
