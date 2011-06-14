@@ -1,0 +1,5 @@
+Using snakefood to generate a dependcy diagram in svg format
+sfood --internal ./Mopy/ | sfood-cluster | sfood-graph | dot -Tsvg > deps.svg
+
+Documentation:
+epydoc -o docs --graph all --name 'Wrye Bash' ./Mopy/
