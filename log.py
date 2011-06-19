@@ -1,8 +1,9 @@
 """
 This contains log and debug related functions
 """
+import os
+
 import conf
-from util import GPath
 
 class Log:
     """Log Callable. This is the abstract/null version. Useful version should
@@ -71,7 +72,7 @@ def deprint(*args,**keyargs):
     import inspect
     stack = inspect.stack()
     file,line,function = stack[1][1:4]
-    msg = '%s %4d %s: %s' % (GPath(file).tail.s,line,function,' '.join(map(str,args)))
+    msg = '%s %4d %s: %s' % (os.path.basename(file).tail.s,line,function,' '.join(map(str,args)))
 
     if keyargs.get('traceback',False):
         import traceback, cStringIO
@@ -88,7 +89,7 @@ def delist(header,items,on=False):
     import inspect
     stack = inspect.stack()
     file,line,function = stack[1][1:4]
-    print '%s %4d %s: %s' % (GPath(file).tail.s,line,function,str(header))
+    print '%s %4d %s: %s' % (os.path.basename(file),line,function,str(header))
     if items == None:
         print '> None'
     else:

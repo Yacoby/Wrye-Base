@@ -23,13 +23,20 @@ _gpaths = {}
 Path = None
 def GPath(name):
     """Returns common path object for specified name/path."""
-    if name is None: return None
-    elif not name: norm = name
-    elif isinstance(name,Path): norm = name._s
-    else: norm = os.path.normpath(name)
+    if name is None:
+        return None
+    elif not name:
+        norm = name
+    elif isinstance(name,Path):
+        norm = name._s
+    else:
+        norm = os.path.normpath(name)
+
     path = _gpaths.get(norm)
-    if path != None: return path
-    else: return _gpaths.setdefault(norm,Path(norm))
+    if path != None:
+        return path
+    else:
+        return _gpaths.setdefault(norm,Path(norm))
 
 #------------------------------------------------------------------------------
 class Path(object):

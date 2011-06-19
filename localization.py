@@ -5,7 +5,7 @@ import cPickle
 
 import conf
 
-from util import Encode
+from util.unicode import Encode
 
 reTrans = re.compile(r'^([ :=\.]*)(.+?)([ :=\.]*$)')
 def compileTranslator(txtPath,pklPath):
