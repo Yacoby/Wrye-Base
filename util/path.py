@@ -1,3 +1,7 @@
+"""
+Contains wrye's wrapper around the os.path functions
+"""
+
 import os
 import shutil
 import re
@@ -5,12 +9,13 @@ import time
 from subprocess import Popen, PIPE
 from binascii import crc32
 
-import conf
-from localization import _
-from struct import Encode, Unicode
-from util import startupinfo
-from log import deprint
-from error import StateError
+from .. import conf
+from ..localization import _
+from ..log import deprint
+from ..error import StateError
+
+from unicode import Encode, Unicode
+from const import startupinfo
 
 # Paths -----------------------------------------------------------------------
 #------------------------------------------------------------------------------
@@ -149,7 +154,7 @@ class Path(object):
         return len(self._s)
 
     def __repr__(self):
-        return "bolt.Path("+repr(self._s)+")"
+        return "wryebase.util.path.Path("+repr(self._s)+")"
 
     def __str__(self):
         return self._s

@@ -1,7 +1,7 @@
 from __future__ import with_statement
 import re
 
-from path import Path
+from util import Path
 
 codebox = None
 
