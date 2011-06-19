@@ -1,6 +1,5 @@
 from __future__ import with_statement
 
-import conf
 from localization import _
 
 class BoltError(Exception):

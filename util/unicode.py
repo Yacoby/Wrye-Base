@@ -2,6 +2,7 @@
 This contains useful data structures and associated functions
 """
 from .. import conf
+from ..log import deprint
 
 # Unicode Strings -------------------------------------------------------------
 # See Python's "aliases.py" for a list of possible encodings

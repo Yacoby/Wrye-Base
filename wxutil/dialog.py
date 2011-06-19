@@ -1,19 +1,13 @@
-import cPickle
 import string
-import sys
-import time
 
 import wx
 
-from .. import error
-from .. import wtex
-
+from ..import wtex
 from ..localization import _
-from ..log import deprint
-from ..util import getStringBuffer, GPath, Path
+from ..util import GPath, Path, getStringBuffer
 
 from sizer import spacer, hSizer, vSizer
-from common import button, bitmapButton, staticText 
+from common import button, bitmapButton, staticText, checkBox
 #from balt import  button, colors, wx.ID_ANY, defPos, staticText, bitmapButton
 
 #------------------------------------------------------------------------------
@@ -34,7 +28,7 @@ def askDirectory(parent,message=_('Choose a directory.'),defaultPath=''):
         return path
 
 #------------------------------------------------------------------------------
-def askContinue(parent,message,continueKey,title=_('Warning')):
+def askContinue(parent,settings,message,continueKey,title=_('Warning')):
     """Shows a modal continue query if value of continueKey is false. Returns True to continue.
     Also provides checkbox "Don't show this in future." to set continueKey to true."""
     #--ContinueKey set?
@@ -62,7 +56,7 @@ def askContinue(parent,message,continueKey,title=_('Warning')):
     #--Get continue key setting and return
     result = dialog.ShowModal()
     if gCheckBox.GetValue():
-        _settings[continueKey] = 1
+        settings[continueKey] = 1
     return result in (wx.ID_OK,wx.ID_YES)
 
 def askContinueShortTerm(parent,message,title=_('Warning')):
@@ -238,7 +232,7 @@ def showLog(parent,settings,logText,title='',style=0,
             asDialog=True,fixedFont=False,icons=None,size=True,question=False):
     """Display text in a log window"""
     #--Sizing
-    pos = settings.get('balt.LogMessage.pos',defPos)
+    pos = settings.get('balt.LogMessage.pos',wx.DefaultPosition)
     if size:
         size = settings.get('balt.LogMessage.size',(400,400))
     #--Dialog or Frame
@@ -309,16 +303,16 @@ def showWryeLog(parent,settings,logText,title='',
             logPath = settings.get('balt.WryeLog.temp',
                                     Path.getcwd().join('WryeLogTemp.html'))
             cssDir = settings.get('balt.WryeLog.cssDir', GPath(''))
-            ins = stringBuffer(logText+'\n{{CSS:wtxt_sand_small.css}}')
+            ins = getStringBuffer(logText+'\n{{CSS:wtxt_sand_small.css}}')
             out = logPath.open('w')
-            bolt.WryeText.genHtml(ins,out,cssDir)
+            wtex.WryeText.genHtml(ins,out,cssDir)
             out.close()
             logText = logPath
         os.startfile(logText.s)
         return
 
     #--Sizing
-    pos = settings.get('balt.WryeLog.pos',defPos)
+    pos = settings.get('balt.WryeLog.pos', wx.DefaultPosition)
     size = settings.get('balt.WryeLog.size',(400,400))
     #--Dialog or Frame
     if asDialog:
@@ -335,9 +329,9 @@ def showWryeLog(parent,settings,logText,title='',
     if not isinstance(logText, Path):
         logPath = settings.get('balt.WryeLog.temp', Path.getcwd().join('WryeLogTemp.html'))
         cssDir = settings.get('balt.WryeLog.cssDir', GPath(''))
-        ins = stringBuffer(logText+'\n{{CSS:wtxt_sand_small.css}}')
+        ins = getStringBuffer(logText+'\n{{CSS:wtxt_sand_small.css}}')
         out = logPath.open('w')
-        bolt.WryeText.genHtml(ins,out,cssDir)
+        wtex.WryeText.genHtml(ins,out,cssDir)
         out.close()
         logText = logPath
     textCtrl.Navigate(logText.s,0x2) #--0x2: Clear History

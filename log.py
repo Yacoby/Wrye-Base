@@ -2,6 +2,7 @@
 This contains log and debug related functions
 """
 import conf
+from util import GPath
 
 class Log:
     """Log Callable. This is the abstract/null version. Useful version should

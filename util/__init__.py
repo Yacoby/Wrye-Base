@@ -17,5 +17,5 @@ def getStringBuffer(*args):
     """
     if conf.useUnicode:
         return StringIO.StringIO(*args)
-    return StringIO.StringIO(*args)
+    return cStringIO.StringIO(*args)
 

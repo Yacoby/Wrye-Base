@@ -1,15 +1,17 @@
 import re
 import os
 import locale
+import cPickle
 
 import conf
+
+from util import Encode
 
 reTrans = re.compile(r'^([ :=\.]*)(.+?)([ :=\.]*$)')
 def compileTranslator(txtPath,pklPath):
     """Compiles specified txtFile into pklFile."""
     reSource = re.compile(r'^=== ')
     reValue = re.compile(r'^>>>>\s*$')
-    reNewLine = re.compile(r'\\n')
     #--Scan text file
     translator = {}
     def addTranslation(key,value):
