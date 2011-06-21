@@ -1,5 +1,9 @@
 """
-This contains useful data structures and associated functions
+This shouldn't exist. It is a horrible hack needed becuase not everything is
+unicode. Everything should be unicode (it isn't like it is 2000 any more)
+
+When data from an outside source is read, the encoding should be known, or at
+least guessed for the area of code. This should be ditched asap
 """
 from .. import conf
 from ..log import deprint

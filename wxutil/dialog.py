@@ -217,6 +217,7 @@ def showQuestionLogCloseYes(settings, event,window):
             settings['balt.LogMessage.pos'] = window.GetPositionTuple()
             settings['balt.LogMessage.size'] = window.GetSizeTuple()
         window.Destroy()
+    global gQuestion
     gQuestion = True
 
 def showQuestionLogCloseNo(settings, event, window):
@@ -226,6 +227,7 @@ def showQuestionLogCloseNo(settings, event, window):
             settings['balt.LogMessage.pos'] = window.GetPositionTuple()
             settings['balt.LogMessage.size'] = window.GetSizeTuple()
         window.Destroy()
+    global gQuestion
     gQuestion = False
 
 def showLog(parent,settings,logText,title='',style=0,
@@ -255,6 +257,7 @@ def showLog(parent,settings,logText,title='',style=0,
         #fixedStyle.SetFlags(0x4|0x80)
         fixedStyle.SetFont(fixedFont)
         textCtrl.SetStyle(0,textCtrl.GetLastPosition(),fixedStyle)
+    global gQuestion
     if question:
         gQuestion = False
         #--Buttons
